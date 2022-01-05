@@ -18,7 +18,12 @@ function DatabaseViewer() {
     const [values, setValues] = useState([]);
     const updateState = async () => {
         const snapshot = await getDocs(collection(db, 'values'));
-        setValues(snapshot);
+        const returnArray = [];
+        snapshot.forEach((doc) => {
+            returnArray.push(doc.data());
+            console.log(doc.id, " => ", doc.data());
+        });
+        setValues(returnArray);
     };
     return (
         <div>
