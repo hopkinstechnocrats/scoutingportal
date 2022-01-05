@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCcq_zzJ4Y0jeUIDCqzmT4U0-1kBofkaps",
@@ -17,7 +17,7 @@ function DatabaseViewer() {
     const db = getFirestore();
     const [values, setValues] = useState([]);
     const updateState = async () => {
-        const snapshot = await db.collection('values').get();
+        const snapshot = await getDocs(collection(db, 'values'));
         setValues(snapshot);
     };
     return (
