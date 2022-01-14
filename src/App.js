@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import './DatabaseViewer';
 import DatabaseViewer from "./DatabaseViewer";
+import Authenticator from "./Authenticator";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         >
           Learn React
         </a>
+        <Authenticator />
         <DatabaseViewer />
       </header>
     </div>
