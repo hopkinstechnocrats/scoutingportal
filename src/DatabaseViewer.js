@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "./firebase.js";
 
 
 

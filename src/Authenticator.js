@@ -1,19 +1,18 @@
-import {FirebaseAuth} from "react-firebaseui";
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
+import {auth, StyledFirebaseAuth, googleProvider} from './firebase.js';
+
 
 function Authenticator() {
     const uiConfig = {
-        signInFlow: 'redirect',
+        signInFlow: 'popup',
         signInSuccessUrl: "/",
         signInOptions: [
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID
+            googleProvider.PROVIDER_ID
         ]
     };
     return (
         <div>
             <h1>Sign In</h1>
-            <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
         </div>
     );
 }
