@@ -1,5 +1,6 @@
 import {firebase, StyledFirebaseAuth} from './firebase.js';
-import React, { useState } from "react";
+import React from "react";
+import {Box, Paper} from "@mui/material";
 
 
 function Authenticator() {
@@ -10,19 +11,12 @@ function Authenticator() {
             firebase.auth.GoogleAuthProvider.PROVIDER_ID
         ]
     };
-    const [displayName, setDisplayName] = useState("");
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            setDisplayName(user.displayName);
-        } else {
-            setDisplayName("");
-        }
-    });
     return (
         <div>
-            <h1>Sign In</h1>
-            <h2>Display Name: {displayName}</h2>
-            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+            <Paper elevation={20} sx={{padding: 1, alignItems: 'center'}}>
+                <Box sx={{color: 'text.primary', textAlign: 'center', fontSize: 30}}>Sign In</Box>
+                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+            </Paper>
         </div>
     );
 }
