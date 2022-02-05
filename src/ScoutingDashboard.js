@@ -7,12 +7,12 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {firebase} from "./firebase.js";
-import {Card} from "@mui/material";
+import ActiveScout from "./matchscout/ActiveScout";
 
-function ScoutingDashboard(props) {
+function ScoutingDashboard() {
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1}}>
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -31,10 +31,7 @@ function ScoutingDashboard(props) {
           </Toolbar>
         </AppBar>
       </Box>
-      <Card>
-        <Box>Hello, {props.user.displayName}</Box>
-      </Card>
-
+      <ActiveScout />
     </div>
   );
 }
