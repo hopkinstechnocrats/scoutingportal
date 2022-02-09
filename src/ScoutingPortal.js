@@ -26,7 +26,13 @@ class ScoutingPortal extends Component {
 
   render() {
     if (this.state.user) {
-      return <ScoutingDashboard user={this.state.user}/>
+      return <Box sx={{
+        display: 'flex',
+        height: '100vh',
+        width: '100vw'
+      }}>
+        <ScoutingDashboard user={this.state.user}/>
+      </Box>;
     } else {
       return (
         <Box sx={{

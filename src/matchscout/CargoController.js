@@ -24,18 +24,18 @@ function CargoController(props) {
         </Grid>
         <Grid container xs={6}>
           <Grid item xs={12}>
-            <Button onClick={() => intakeBall("ground")}>Intake From Ground</Button>
+            <Button variant="contained" sx={{margin: 1}} onClick={() => intakeBall("ground")} disabled={currentNumCargo >= 2}>Intake From Ground</Button>
           </Grid>
           <Grid item xs={12}>
-            <Button onClick={() => intakeBall("terminal")}>Intake From Terminal</Button>
+            <Button variant="contained" sx={{margin: 1}} onClick={() => intakeBall("terminal")} disabled={currentNumCargo >= 2}>Intake From Terminal</Button>
           </Grid>
         </Grid>
         <Grid container xs={6}>
           <Grid item xs={12}>
-            <Button onClick={() => scoreBall("lowhub")}>Score Low Hub</Button>
+            <Button variant="contained" sx={{margin: 1}} onClick={() => scoreBall("lowhub")} disabled={currentNumCargo <= 0}>Score Low Hub</Button>
           </Grid>
           <Grid item xs={12}>
-            <Button onClick={() => scoreBall("highhub")}>Score High Hub</Button>
+            <Button variant="contained" sx={{margin: 1}} onClick={() => scoreBall("highhub")} disabled={currentNumCargo <= 0}>Score High Hub</Button>
           </Grid>
         </Grid>
       </Grid>

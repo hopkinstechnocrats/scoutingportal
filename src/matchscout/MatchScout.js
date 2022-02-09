@@ -13,10 +13,14 @@ class MatchScout extends Component {
     this.state = {matchPeriod: 0}; //0: auto, 1: teleop, 2: climb
     this.backButton = <Button>Back</Button>;
     this.nextButton = <Button onClick={() => this.nextPeriod()}>Next</Button>;
+    const metadata = {
+      team: this.props.teamNumber,
+      match: this.props.matchNumber
+    }
     this.matchPeriods = [
-      <AutoScout />,
-      <TeleopScout />,
-      <ClimbScout />
+      <AutoScout metadata={metadata}/>,
+      <TeleopScout metadata={metadata}/>,
+      <ClimbScout metadata={metadata}/>
     ]
   }
 
@@ -28,7 +32,7 @@ class MatchScout extends Component {
   render() {
     return (<div>
       <Typography sx={{textAlign: "center"}}>
-        Scouting Team {this.props.teamNumber}
+        Scouting Team {this.props.teamNumber}, Match {this.props.matchNumber}
       </Typography>
       <Stepper steps="3" activeStep={this.state.matchPeriod} variant="text" backButton={this.backButton} nextButton={this.nextButton}>
         <Step key="Auto">

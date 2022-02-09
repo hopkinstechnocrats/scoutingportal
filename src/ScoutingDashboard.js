@@ -8,11 +8,18 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {firebase} from "./firebase.js";
 import ActiveScout from "./matchscout/ActiveScout";
+import {useState} from "react";
+import DataViewer from "./dataviewer/DataViewer";
 
 function ScoutingDashboard() {
+  const pages = {
+    scout: <ActiveScout />,
+    dataviewer: <DataViewer />
+  };
+  const [currentPage, setCurrentPage] = useState("scout");
+
   return (
-    <div>
-      <Box sx={{ flexGrow: 1}}>
+      <Box sx={{ flexGrow: 1, height: '100%', width: '100%'}}>
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -27,13 +34,14 @@ function ScoutingDashboard() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Scouting Dashboard
             </Typography>
+            <Button color="inherit" onClick={() => setCurrentPage("scout")}>Scout</Button>
+            <Button color="inherit" onClick={() => setCurrentPage("dataviewer")}>Data</Button>
             <Button color="inherit" onClick={() => firebase.auth().signOut()}>Logout</Button>
           </Toolbar>
         </AppBar>
+        {pages[currentPage]}
       </Box>
-      <ActiveScout />
-    </div>
   );
 }
 
-export default ScoutingDashboard
+export default ScoutingDashboard;

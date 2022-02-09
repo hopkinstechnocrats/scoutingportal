@@ -9,6 +9,7 @@ class ActiveScout extends Component {
     super(props);
     this.state = {
       team: null,
+      match: null
     }
   }
 
@@ -16,9 +17,9 @@ class ActiveScout extends Component {
     let currentPage;
     if (this.state.team) {
       console.log(this.state.team);
-      currentPage = <MatchScout teamNumber={this.state.team}/>;
+      currentPage = <MatchScout teamNumber={this.state.team} matchNumber={this.state.match}/>;
     } else {
-      currentPage = <TeamNumberEntry startScouting={(team) => this.setState({team: team})}/>;
+      currentPage = <TeamNumberEntry startScouting={(team, match) => this.setState({team: team, match: match})}/>;
     }
 
     return (

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc, Timestamp, query, where, onSnapshot} from "firebase/firestore";
 import {StyledFirebaseAuth} from "react-firebaseui";
 
 
@@ -28,6 +28,11 @@ export {
     getFirestore,
     collection,
     getDocs,
+    addDoc,
+    query,
+    where,
+    onSnapshot,
+    Timestamp,
     StyledFirebaseAuth,
     firebase,
 };
