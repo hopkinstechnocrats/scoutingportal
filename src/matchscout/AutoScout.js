@@ -2,7 +2,7 @@ import {Component} from "react";
 import {Box, Grid} from "@mui/material";
 import CargoController from "./CargoController";
 import onMatchEvent from "./MatchEvent";
-import {firebase, Timestamp} from "../firebase.js";
+import {Timestamp} from "../firebase.js";
 
 class AutoScout extends Component {
   onIntakeBall(location) {

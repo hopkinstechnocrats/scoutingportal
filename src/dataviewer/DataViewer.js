@@ -1,5 +1,5 @@
 import {DataGrid} from '@mui/x-data-grid';
-import {collection, getFirestore, query, onSnapshot, getDocs, where} from "../firebase";
+import {collection, getFirestore, query, getDocs, where} from "../firebase";
 import {useEffect, useState} from "react";
 
 function DataViewer() {
@@ -51,23 +51,22 @@ function DataViewer() {
     };
   };
 
-  const getData = async () => {
-    console.log("GET DATA");
-    const teams = await getDocs(query(collection(getFirestore(), "teams")));
-    let newrows = [];
-    console.log("teams: ");
-    console.log(teams);
-    for (const team of teams.docs) {
-      const result = await queryTeamData(team.data().number);
-      console.log(result);
-      newrows = [...newrows, result];
-    }
-    console.log("PRERETURN NEWROWS:");
-    console.log(newrows);
-    return newrows;
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      console.log("GET DATA");
+      const teams = await getDocs(query(collection(getFirestore(), "teams")));
+      let newrows = [];
+      console.log("teams: ");
+      console.log(teams);
+      for (const team of teams.docs) {
+        const result = await queryTeamData(team.data().number);
+        console.log(result);
+        newrows = [...newrows, result];
+      }
+      console.log("PRERETURN NEWROWS:");
+      console.log(newrows);
+      return newrows;
+    };
     console.log("starting effect");
     getData()
       .then((newrows) => {
